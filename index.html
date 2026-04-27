@@ -8,67 +8,100 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
-        :root { --p: #ff5e5e; --bg: #0b0e11; --card: #1e2329; --gold: #f0b90b; --green: #02c076; }
+        :root { --p: #ff5e5e; --bg: #ffffff; --card: #f8f9fa; --text-main: #333333; --text-gray: #666666; --gold: #e29c00; --border: #eeeeee; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--bg); color: white; padding-bottom: 50px; text-align: center; }
+        body { background: var(--bg); color: var(--text-main); padding-bottom: 50px; text-align: center; }
 
-        /* Header Section */
-        .header { background: linear-gradient(180deg, #1e2329 0%, #0b0e11 100%); padding: 50px 20px; border-bottom: 2px solid #333; position: relative; overflow: hidden; }
-        .header::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(240,185,11,0.1) 0%, transparent 70%); z-index: 0; }
+        /* Header with Banner behind Logo */
+        .header { 
+            position: relative; 
+            height: 250px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            overflow: hidden;
+        }
+        .bg-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('banner.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 0;
+            filter: brightness(0.9);
+        }
+        .main-logo { 
+            width: 120px; 
+            height: 120px; 
+            position: relative; 
+            z-index: 1; 
+            background: white;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
         
-        .main-logo { width: 140px; height: 140px; position: relative; z-index: 1; filter: drop-shadow(0 0 15px rgba(240,185,11,0.5)); animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .welcome-text { font-size: 16px; color: var(--gold); font-weight: 600; margin-top: 15px; position: relative; z-index: 1; }
-        .game-title { font-size: 32px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 2px; position: relative; z-index: 1; }
+        .welcome-text { font-size: 16px; color: white; font-weight: 600; margin-top: 10px; position: relative; z-index: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .game-title { font-size: 28px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 2px; position: relative; z-index: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         
         .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        /* Bonus Card */
-        .bonus-card { background: linear-gradient(135deg, #2b3139, #161a1e); padding: 30px 20px; border-radius: 25px; margin-top: -40px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); border: 1px solid #444; position: relative; z-index: 2; }
-        .bonus-amount { font-size: 45px; font-weight: 800; color: var(--gold); text-shadow: 0 0 10px rgba(240,185,11,0.5); }
-        .bonus-desc { font-size: 14px; color: var(--text-gray); margin-bottom: 20px; opacity: 0.8; }
+        /* Bonus Card - White Theme */
+        .bonus-card { 
+            background: white; 
+            padding: 30px 20px; 
+            border-radius: 25px; 
+            margin-top: -40px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            border: 1px solid var(--border); 
+            position: relative; 
+            z-index: 2; 
+        }
+        .bonus-amount { font-size: 45px; font-weight: 800; color: var(--gold); }
+        .bonus-desc { font-size: 14px; color: var(--text-gray); margin-bottom: 20px; }
 
         /* Download Button */
         .download-btn {
             background: linear-gradient(180deg, #ffde00, #e29c00);
             color: #4b2a00;
-            padding: 20px;
+            padding: 18px;
             border-radius: 15px;
             text-decoration: none;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            box-shadow: 0 8px 0 #9e6d00, 0 15px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 0 #9e6d00, 0 10px 20px rgba(226, 156, 0, 0.3);
             width: 100%;
             transition: 0.1s;
-            margin-bottom: 10px;
         }
-        .download-btn:active { transform: translateY(4px); box-shadow: 0 4px 0 #9e6d00, 0 5px 10px rgba(0,0,0,0.3); }
+        .download-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #9e6d00; }
 
-        /* Info Table */
-        .info-table { width: 100%; margin-top: 30px; border-collapse: collapse; background: var(--card); border-radius: 15px; overflow: hidden; border: 1px solid #333; text-align: left; }
-        .info-table tr { border-bottom: 1px solid #2a2e33; }
-        .info-table tr:last-child { border-bottom: none; }
-        .info-table th { background: #2b3139; padding: 12px 15px; color: var(--gold); font-size: 14px; text-transform: uppercase; }
-        .info-table td { padding: 12px 15px; font-size: 13px; vertical-align: middle; }
-        .feature-name { color: #fff; font-weight: 600; width: 40%; }
-        .feature-value { color: var(--text-gray); }
+        /* Info Table - White Theme */
+        .info-table { width: 100%; margin-top: 30px; border-collapse: collapse; background: var(--card); border-radius: 15px; overflow: hidden; border: 1px solid var(--border); text-align: left; }
+        .info-table tr { border-bottom: 1px solid var(--border); }
+        .info-table th { background: #f1f3f5; padding: 12px 15px; color: var(--text-main); font-size: 14px; text-transform: uppercase; }
+        .info-table td { padding: 12px 15px; font-size: 13px; }
+        .feature-name { color: var(--text-main); font-weight: 600; width: 45%; }
+        .feature-value { color: var(--text-gray); font-weight: 500; }
 
         /* Footer */
-        .footer { margin-top: 40px; font-size: 12px; color: #555; border-top: 1px solid #222; padding-top: 20px; }
+        .footer { margin-top: 40px; font-size: 12px; color: #999; border-top: 1px solid var(--border); padding-top: 20px; }
 
-        /* Animations */
         @keyframes scaleIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <img src="logomain.png" alt="88 Slots Logo" class="main-logo">
-        <p class="welcome-text">Official Download Portal</p>
-        <h1 class="game-title">spin slots</h1>
+        <div class="bg-banner"></div> <img src="logo.png" alt="Logo" class="main-logo"> <p class="welcome-text">Official Download Portal</p>
+        <h1 class="game-title">88 SLOTS</h1>
     </div>
 
     <div class="container">
@@ -79,7 +112,6 @@
             <a href="https://slotsspin.xyz/?code=C1A2KMJ7UT7&t=1777112726" class="download-btn" id="dlBtn">
                 <i class="fas fa-download"></i> Download Slot Spin 🎰
             </a>
-            <p style="font-size: 10px; color: var(--green); margin-top: 5px;"><i class="fas fa-check-circle"></i> Verified & Safe APK</p>
         </div>
 
         <table class="info-table">
@@ -89,61 +121,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="feature-name">🎮 App Name</td>
-                    <td class="feature-value">88 Slots (Official) 🎰</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">📥 File Size</td>
-                    <td class="feature-value">Approx 45 MB 📱</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">💰 Welcome Bonus</td>
-                    <td class="feature-value">Up to 100% Extra Cash 🎁</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">📈 Winning Rate</td>
-                    <td class="feature-value">High RTP (97%+) 🔥</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">💳 Deposit</td>
-                    <td class="feature-value">UPI, GPay, PhonePe 📲</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">🏧 Withdrawal</td>
-                    <td class="feature-value">Instant (24 Hours) ⚡</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">💸 Min. Withdraw</td>
-                    <td class="feature-value">₹100 – ₹500 💰</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">🔐 Safety</td>
-                    <td class="feature-value">SSL 100% Secure 🛡️</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">📱 Device</td>
-                    <td class="feature-value">Android & iOS 🍏🤖</td>
-                </tr>
-                <tr>
-                    <td class="feature-name">⭐ Rating</td>
-                    <td class="feature-value">5.0/5.0 Stars ⭐⭐⭐⭐⭐</td>
-                </tr>
+                <tr><td class="feature-name">🎮 App Name</td><td class="feature-value">88 Slots (Official) 🎰</td></tr>
+                <tr><td class="feature-name">📥 File Size</td><td class="feature-value">Approx 45 MB 📱</td></tr>
+                <tr><td class="feature-name">💰 Welcome Bonus</td><td class="feature-value">Up to 100% Extra Cash 🎁</td></tr>
+                <tr><td class="feature-name">📈 Winning Rate</td><td class="feature-value">High RTP (97%+) 🔥</td></tr>
+                <tr><td class="feature-name">💳 Deposit</td><td class="feature-value">UPI, GPay, PhonePe 📲</td></tr>
+                <tr><td class="feature-name">🏧 Withdrawal</td><td class="feature-value">Instant (24 Hours) ⚡</td></tr>
+                <tr><td class="feature-name">💸 Min. Withdraw</td><td class="feature-value">₹100 – ₹500 💰</td></tr>
+                <tr><td class="feature-name">🔐 Safety</td><td class="feature-value">SSL 100% Secure 🛡️</td></tr>
+                <tr><td class="feature-name">📱 Device</td><td class="feature-value">Android & iOS 🍏🤖</td></tr>
+                <tr><td class="feature-name">⭐ Rating</td><td class="feature-value">4.8/5.0 Stars ⭐⭐⭐⭐⭐</td></tr>
             </tbody>
         </table>
 
         <div class="footer">
-            <p><strong>Disclaimer:</strong> This game involves financial risk. Please play responsibly. Only for 18+ users.</p>
+            <p><strong>Disclaimer:</strong> This game involves financial risk. 18+ only.</p>
             <p>© 2026 88 Slots - All rights reserved.</p>
         </div>
     </div>
 
     <script>
         window.addEventListener('load', () => {
-            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: ['#f0b90b', '#ffffff', '#ffde00'] });
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
         });
-
-        document.getElementById('dlBtn').addEventListener('click', (e) => {
+        document.getElementById('dlBtn').addEventListener('click', () => {
             confetti({ particleCount: 100, spread: 70, origin: { y: 0.8 } });
         });
     </script>
