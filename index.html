@@ -8,42 +8,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
-        :root { --p: #ff5e5e; --bg: #ffffff; --card: #f8f9fa; --text-main: #333333; --text-gray: #666666; --gold: #e29c00; --border: #eeeeee; }
+        :root { --p: #ff5e5e; --bg: #ffffff; --card: #ffffff; --text-main: #222222; --text-gray: #444444; --gold: #d48806; --border: #000000; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--bg); color: var(--text-main); text-align: center; line-height: 1.6; }
+        body { background: var(--bg); color: var(--text-main); text-align: center; line-height: 1.6; font-size: 16px; }
 
         .full-page-link { text-decoration: none; color: inherit; display: block; cursor: pointer; }
 
-        /* Header & Banner */
-        .header { position: relative; height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
-        .bg-banner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('banner.png') no-repeat center center; background-size: cover; z-index: 0; }
-        .main-logo { width: 110px; position: relative; z-index: 1; background: white; border-radius: 15px; padding: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .game-title { font-size: 24px; font-weight: 800; color: white; position: relative; z-index: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.5); margin-top: 10px; }
+        /* Banner Fix */
+        .header { position: relative; height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        .bg-banner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://is3-ssl.mzstatic.com/image/thumb/Purple7/v4/0c/76/b2/0c76b2cf-a764-af5b-fbba-92f80ab3e373/source/480x320bb.jpg') no-repeat center center; background-size: cover; z-index: 0; }
+        .main-logo { width: 130px; position: relative; z-index: 1; background: white; border-radius: 20px; padding: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 2px solid var(--gold); }
+        .game-title { font-size: 30px; font-weight: 800; color: white; position: relative; z-index: 1; text-shadow: 2px 2px 15px rgba(0,0,0,0.8); margin-top: 15px; text-transform: uppercase; }
 
-        .container { max-width: 500px; margin: 0 auto; padding: 20px; text-align: left; }
+        .container { max-width: 550px; margin: 0 auto; padding: 25px; text-align: left; }
 
-        /* Section Images */
-        .pr-img { width: 100%; border-radius: 15px; margin: 20px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        /* Square Border Table */
+        .info-table { width: 100%; border-collapse: collapse; margin: 25px 0; border: 2px solid var(--border); }
+        .info-table th { background: #f2f2f2; padding: 15px; font-size: 18px; text-align: center; border: 2px solid var(--border); color: #000; }
+        .info-table td { padding: 15px; font-size: 15px; border: 2px solid var(--border); color: var(--text-main); vertical-align: middle; }
+        .f-name { font-weight: 800; background: #fafafa; width: 45%; }
 
-        /* Info Table */
-        .info-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 15px; overflow: hidden; border: 1px solid var(--border); margin: 20px 0; }
-        .info-table th { background: #f1f3f5; padding: 12px; font-size: 14px; text-align: center; border-bottom: 2px solid var(--border); }
-        .info-table td { padding: 12px; font-size: 13px; border-bottom: 1px solid var(--border); }
-        .f-name { font-weight: 600; width: 40%; }
+        /* Bigger Content */
+        h2 { font-size: 24px; font-weight: 800; }
+        h3 { font-size: 22px; margin-bottom: 15px; border-left: 5px solid var(--gold); padding-left: 10px; }
+        .pr-img { width: 100%; border-radius: 10px; margin: 25px 0; border: 1px solid #ddd; }
 
-        /* Download Buttons */
-        .dl-btn { background: linear-gradient(180deg, #ffde00, #e29c00); color: #4b2a00; padding: 15px; border-radius: 10px; text-decoration: none; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 5px 0 #9e6d00; margin: 15px 0; }
+        .dl-btn { background: linear-gradient(180deg, #ffde00, #e29c00); color: #4b2a00; padding: 20px; border-radius: 12px; font-size: 22px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 6px 0 #9e6d00; margin: 20px 0; }
 
-        /* Features List */
-        .feature-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 14px; }
-        .feature-item i { color: var(--gold); }
+        /* Gambling Disclaimer - BIG & BOLD */
+        .gambling-note { background: #fff5f5; border: 3px dashed #ff4d4f; padding: 20px; border-radius: 15px; margin: 30px 0; text-align: center; }
+        .gambling-note h4 { color: #cf1322; font-size: 20px; margin-bottom: 10px; text-transform: uppercase; }
+        .gambling-note p { font-size: 14px; font-weight: 600; color: #444; }
 
-        /* Footer & Social */
-        .footer { background: #f8f9fa; padding: 30px 20px; border-top: 1px solid var(--border); text-align: center; }
-        .social-icons { display: flex; justify-content: center; gap: 20px; margin: 20px 0; font-size: 24px; }
-        .social-icons i { color: #555; }
-        .terms-box { background: #e9ecef; padding: 15px; border-radius: 10px; font-size: 12px; text-align: left; }
-
+        .footer { background: #f0f2f5; padding: 40px 20px; border-top: 2px solid #ddd; text-align: center; }
+        .social-icons { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; font-size: 28px; }
+        .social-icons i { color: #333; }
     </style>
 </head>
 <body>
@@ -51,60 +50,63 @@
 <a href="https://slotsspin.xyz/?code=C1A2KMJ7UT7&t=1777112726" class="full-page-link">
     
     <div class="header">
-        <div class="https://is3-ssl.mzstatic.com/image/thumb/Purple7/v4/0c/76/b2/0c76b2cf-a764-af5b-fbba-92f80ab3e373/source/480x320bb.jpg"></div>
+        <div class="bg-banner"></div>
         <img src="logo.png" alt="Logo" class="main-logo">
-        <h1 class="game-title">spin slot</h1>
+        <h1 class="game-title">Spin Slot Official</h1>
     </div>
 
     <div class="container">
-        <p style="font-size: 13px; color: var(--text-gray);">4.8/5 ⭐⭐⭐⭐⭐</p>
-        <h2 style="font-size: 20px; margin: 10px 0;">🎰 88 Slots App Download: Ultimate Guide! 💰</h2>
+        <p style="font-size: 15px; color: var(--gold); font-weight: bold;">⭐ 4.8/5 Rating by 1.2M+ Users</p>
+        <h2 style="margin: 15px 0;">🎰 88 Slots App Download: Win Real Cash Today! 💰</h2>
         
-        <img src="https://lh3.googleusercontent.com/xGUl48cFWH83GNREddUjosKAR3E0tEJHiqTcPD2ZtWJaI24V-rJVgFTkJNWFtunFjBg=h310" alt="Preview 1" class="pr-img">
+        <img src="pr1.png" alt="Preview 1" class="pr-img">
 
-        <div class="dl-btn"><i class="fas fa-download"></i> Download Now</div>
+        <div class="dl-btn"><i class="fas fa-download"></i> DOWNLOAD APP NOW</div>
 
         <table class="info-table">
-            <thead><tr><th colspan="2">Feature 📋 Details & Information 📝</th></tr></thead>
+            <thead>
+                <tr><th colspan="2">Feature 📋 & App Details 📝</th></tr>
+            </thead>
             <tbody>
                 <tr><td class="f-name">🎮 App Name</td><td>88 Slots (Official) 🎰</td></tr>
-                <tr><td class="f-name">📥 File Size</td><td>Approx 45 MB 📱</td></tr>
-                <tr><td class="f-name">💰 Bonus</td><td>Up to 100% Extra 🎁</td></tr>
-                <tr><td class="f-name">📈 Win Rate</td><td>High RTP (97%+) 🔥</td></tr>
-                <tr><td class="f-name">💳 Deposit</td><td>UPI, GPay, PhonePe 📲</td></tr>
+                <tr><td class="f-name">📥 File Size</td><td>Approx 45 MB (Lightweight) 📱</td></tr>
+                <tr><td class="f-name">💰 Welcome Bonus</td><td>Up to 100% Extra Cash 🎁</td></tr>
+                <tr><td class="f-name">📈 Winning Rate</td><td>High RTP (97.5%+) 🔥</td></tr>
+                <tr><td class="f-name">💳 Deposit Methods</td><td>UPI, GPay, PhonePe, Net Banking</td></tr>
+                <tr><td class="f-name">🏧 Withdrawal</td><td>Instant to 24 Hours ⚡</td></tr>
+                <tr><td class="f-name">💸 Min. Withdraw</td><td>₹100 – ₹500 (Instant) 💰</td></tr>
+                <tr><td class="f-name">🔐 Security</td><td>SSL Encrypted & 100% Secure 🛡️</td></tr>
+                <tr><td class="f-name">📱 OS Support</td><td>Android & iOS 🍏🤖</td></tr>
             </tbody>
         </table>
 
-        <img src="https://lh3.googleusercontent.com/q004TDAE6bitezKG4TlGnFcCGAM0nG30siWPXH161TVhIZZ3YAWpZT8GDAgDnY17P-I=h310" alt="Preview 2" class="pr-img">
+        <img src="pr2.png" alt="Preview 2" class="pr-img">
 
-        <h3 style="margin-top: 20px;">🚀 Key Features</h3>
-        <div class="feature-item"><i class="fas fa-bolt"></i> Super Fast UI: Zero lag!</div>
-        <div class="feature-item"><i class="fas fa-check-circle"></i> 100% Secure & Encrypted</div>
-        <div class="feature-item"><i class="fas fa-gift"></i> Daily Rewards & VIP Perks</div>
+        <h3>🚀 Premium Features</h3>
+        <p style="margin-bottom: 20px;">88 Slots is not just a game; it's a world-class casino experience. Enjoy zero-lag gameplay with our advanced server technology.</p>
 
-        <img src="https://folktailspets.com/template_static/rummy-12/static/picture/ban0.webp" alt="Preview 3" class="pr-img">
-
-        <h3 style="margin-top: 20px;">🌟 Top Benefits</h3>
-        <p style="font-size: 13px; color: var(--text-gray); margin-bottom: 15px;">Experience Vegas on your phone with massive payout potential and non-stop bonuses.</p>
-        
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkc8AgZ_VhNVE7lStpHOwWdTlt37k3LiqTvQ&s" alt="Preview 4" class="pr-img">
-
-        <div class="terms-box">
-            <h4 style="margin-bottom: 10px;">⚠️ Terms & Conditions</h4>
-            <p>• Must be 18+ to play.</p>
-            <p>• One account per person.</p>
-            <p>• Play responsibly.</p>
+        <div class="gambling-note">
+            <h4>⚠️ Important Notice: Real Money Gaming</h4>
+            <p>This website promotes real money gambling. Participation involves financial risk and may be addictive. Only users aged 18 and above are allowed to play. Please play responsibly and at your own risk.</p>
         </div>
+
+        <img src="pr3.png" alt="Preview 3" class="pr-img">
+
+        <h4 style="font-size: 18px; margin-bottom: 10px;">🛡️ Why Choose Us?</h4>
+        <p style="font-size: 15px; color: var(--text-gray);">We provide the safest platform for online slots with daily free spins and VIP rewards. Our 24/7 customer support ensures you never face any issues with deposits or withdrawals.</p>
+
+        <img src="pr4.png" alt="Preview 4" class="pr-img">
     </div>
 
     <div class="footer">
         <div class="social-icons">
-            <i class="fab fa-facebook"></i>
+            <i class="fab fa-facebook-square"></i>
             <i class="fab fa-twitter"></i>
             <i class="fab fa-instagram"></i>
             <i class="fab fa-youtube"></i>
         </div>
-        <p style="font-size: 11px; color: #999;">Copyright © 2026 88slotsgames.com. Powered by 88Slots</p>
+        <p style="font-size: 12px; color: #666; font-weight: bold;">Copyright © 2026 88slotsgames.com | All Rights Reserved</p>
+        <p style="font-size: 10px; color: #999; margin-top: 10px;">18+ Only | Terms & Conditions Apply</p>
     </div>
 </a>
 
