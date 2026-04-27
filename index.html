@@ -3,116 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>88 Slots - Official Download</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>88 Slots - Official High-Win Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
-        :root { --p: #ff5e5e; --bg: #ffffff; --card: #ffffff; --text-main: #222222; --text-gray: #444444; --gold: #d48806; --border: #000000; }
+        :root { --gold: #fadb14; --red-bright: #ff4d4f; --blue-dark: #001529; --bg-light: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: var(--bg); color: var(--text-main); text-align: center; line-height: 1.6; font-size: 16px; }
+        body { background: var(--bg-light); color: #222; text-align: center; line-height: 1.6; font-size: 17px; }
 
-        .full-page-link { text-decoration: none; color: inherit; display: block; cursor: pointer; }
+        /* Full Page Click */
+        .page-wrapper { text-decoration: none; color: inherit; display: block; cursor: pointer; }
 
-        /* Banner Fix */
-        .header { position: relative; height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
-        .bg-banner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://is3-ssl.mzstatic.com/image/thumb/Purple7/v4/0c/76/b2/0c76b2cf-a764-af5b-fbba-92f80ab3e373/source/480x320bb.jpg') no-repeat center center; background-size: cover; z-index: 0; }
-        .main-logo { width: 130px; position: relative; z-index: 1; background: white; border-radius: 20px; padding: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 2px solid var(--gold); }
-        .game-title { font-size: 30px; font-weight: 800; color: white; position: relative; z-index: 1; text-shadow: 2px 2px 15px rgba(0,0,0,0.8); margin-top: 15px; text-transform: uppercase; }
+        /* Banner Section - Fix */
+        .header-section { 
+            position: relative; 
+            height: 300px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            background: url('https://is3-ssl.mzstatic.com/image/thumb/Purple7/v4/0c/76/b2/0c76b2cf-a764-af5b-fbba-92f80ab3e373/source/480x320bb.jpg') no-repeat center center;
+            background-size: cover;
+            border-bottom: 5px solid var(--gold);
+        }
+        .header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 0; }
+        
+        .main-logo { 
+            width: 140px; 
+            z-index: 1; 
+            background: #fff; 
+            padding: 10px; 
+            border-radius: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            border: 3px solid var(--gold);
+        }
+        .game-headline { z-index: 1; color: #fff; font-size: 32px; font-weight: 800; text-transform: uppercase; margin-top: 15px; text-shadow: 2px 4px 10px #000; }
 
-        .container { max-width: 550px; margin: 0 auto; padding: 25px; text-align: left; }
+        .content-container { max-width: 600px; margin: 0 auto; padding: 25px; text-align: left; }
 
-        /* Square Border Table */
-        .info-table { width: 100%; border-collapse: collapse; margin: 25px 0; border: 2px solid var(--border); }
-        .info-table th { background: #f2f2f2; padding: 15px; font-size: 18px; text-align: center; border: 2px solid var(--border); color: #000; }
-        .info-table td { padding: 15px; font-size: 15px; border: 2px solid var(--border); color: var(--text-main); vertical-align: middle; }
-        .f-name { font-weight: 800; background: #fafafa; width: 45%; }
+        /* Square Modern Table with Colors */
+        .modern-table { width: 100%; border-collapse: collapse; margin: 30px 0; border: 3px solid #333; box-shadow: 10px 10px 0px #f0f0f0; }
+        .modern-table th { background: #333; color: var(--gold); padding: 18px; font-size: 20px; border: 2px solid #333; text-align: center; }
+        .modern-table td { padding: 15px; font-size: 16px; border: 2px solid #333; font-weight: 600; }
+        .row-label { background: #f9f9f9; width: 40%; color: #555; }
+        .row-data { color: #000; }
 
-        /* Bigger Content */
-        h2 { font-size: 24px; font-weight: 800; }
-        h3 { font-size: 22px; margin-bottom: 15px; border-left: 5px solid var(--gold); padding-left: 10px; }
-        .pr-img { width: 100%; border-radius: 10px; margin: 25px 0; border: 1px solid #ddd; }
+        /* Buttons */
+        .main-dl-btn { 
+            background: linear-gradient(180deg, #ff4d4f, #cf1322); 
+            color: white; 
+            padding: 22px; 
+            border-radius: 15px; 
+            font-size: 24px; 
+            font-weight: 800; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px; 
+            box-shadow: 0 8px 0 #820014; 
+            margin: 25px 0;
+            animation: pulse 1.5s infinite;
+        }
 
-        .dl-btn { background: linear-gradient(180deg, #ffde00, #e29c00); color: #4b2a00; padding: 20px; border-radius: 12px; font-size: 22px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 6px 0 #9e6d00; margin: 20px 0; }
+        /* Disclaimer & Notes - Gambling Style */
+        .alert-box { background: #fff1f0; border: 2px solid #ffa39e; padding: 20px; border-radius: 12px; margin: 30px 0; }
+        .alert-box h4 { color: #cf1322; margin-bottom: 8px; font-size: 20px; text-transform: uppercase; }
+        
+        .official-note { border-left: 8px solid var(--blue-dark); background: #e6f7ff; padding: 20px; margin: 25px 0; font-size: 14px; color: #003a8c; }
 
-        /* Gambling Disclaimer - BIG & BOLD */
-        .gambling-note { background: #fff5f5; border: 3px dashed #ff4d4f; padding: 20px; border-radius: 15px; margin: 30px 0; text-align: center; }
-        .gambling-note h4 { color: #cf1322; font-size: 20px; margin-bottom: 10px; text-transform: uppercase; }
-        .gambling-note p { font-size: 14px; font-weight: 600; color: #444; }
+        .img-preview { width: 100%; border-radius: 15px; margin: 25px 0; border: 2px solid #eee; }
 
-        .footer { background: #f0f2f5; padding: 40px 20px; border-top: 2px solid #ddd; text-align: center; }
-        .social-icons { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; font-size: 28px; }
-        .social-icons i { color: #333; }
+        /* Footer Socials */
+        .footer-area { background: #f5f5f5; padding: 50px 20px; border-top: 1px solid #ddd; text-align: center; }
+        .social-row { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
+        .social-row i { font-size: 30px; color: #444; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
-<a href="https://slotsspin.xyz/?code=C1A2KMJ7UT7&t=1777112726" class="full-page-link">
+<a href="https://slotsspin.xyz/?code=C1A2KMJ7UT7&t=1777112726" class="page-wrapper">
     
-    <div class="header">
-        <div class="bg-banner"></div>
-        <img src="logo.png" alt="Logo" class="main-logo">
-        <h1 class="game-title">Spin Slot Official</h1>
-    </div>
+    <header class="header-section">
+        <div class="header-overlay"></div>
+        <img src="logo.png" alt="88 Slots Logo" class="main-logo">
+        <h1 class="game-headline">88 Slots Official</h1>
+    </header>
 
-    <div class="container">
-        <p style="font-size: 15px; color: var(--gold); font-weight: bold;">⭐ 4.8/5 Rating by 1.2M+ Users</p>
-        <h2 style="margin: 15px 0;">🎰 88 Slots App Download: Win Real Cash Today! 💰</h2>
-        
-        <img src="pr1.png" alt="Preview 1" class="pr-img">
+    <div class="content-container">
+        <p style="color: var(--gold); font-weight: 800; font-size: 18px;">🔥 BEST OF 2026: HIGH WIN RATE APP</p>
+        <h2 style="margin: 10px 0; font-size: 26px;">Download 88 Slots APK: Play, Spin & Win Rewards! 🎰💰</h2>
 
-        <div class="dl-btn"><i class="fas fa-download"></i> DOWNLOAD APP NOW</div>
+        <img src="pr1.png" alt="App Preview" class="img-preview">
 
-        <table class="info-table">
+        <div class="main-dl-btn">
+            <i class="fas fa-cloud-download-alt"></i> DOWNLOAD APK NOW
+        </div>
+
+        <table class="modern-table">
             <thead>
-                <tr><th colspan="2">Feature 📋 & App Details 📝</th></tr>
+                <tr><th colspan="2">📋 APP SPECIFICATIONS & INFO</th></tr>
             </thead>
             <tbody>
-                <tr><td class="f-name">🎮 App Name</td><td>88 Slots (Official) 🎰</td></tr>
-                <tr><td class="f-name">📥 File Size</td><td>Approx 45 MB (Lightweight) 📱</td></tr>
-                <tr><td class="f-name">💰 Welcome Bonus</td><td>Up to 100% Extra Cash 🎁</td></tr>
-                <tr><td class="f-name">📈 Winning Rate</td><td>High RTP (97.5%+) 🔥</td></tr>
-                <tr><td class="f-name">💳 Deposit Methods</td><td>UPI, GPay, PhonePe, Net Banking</td></tr>
-                <tr><td class="f-name">🏧 Withdrawal</td><td>Instant to 24 Hours ⚡</td></tr>
-                <tr><td class="f-name">💸 Min. Withdraw</td><td>₹100 – ₹500 (Instant) 💰</td></tr>
-                <tr><td class="f-name">🔐 Security</td><td>SSL Encrypted & 100% Secure 🛡️</td></tr>
-                <tr><td class="f-name">📱 OS Support</td><td>Android & iOS 🍏🤖</td></tr>
+                <tr><td class="row-label">🎮 Game Name</td><td class="row-data">88 Slots (v3.5.1)</td></tr>
+                <tr><td class="row-label">📥 File Size</td><td class="row-data">45.8 MB (Fast Install)</td></tr>
+                <tr><td class="row-label">💰 Welcome Bonus</td><td class="row-data">Rs. 200 + 100% Extra Cash</td></tr>
+                <tr><td class="row-label">📈 RTP Rate</td><td class="row-data">98.2% (Super High Win)</td></tr>
+                <tr><td class="row-label">🏧 Withdrawal</td><td class="row-data">Instant (UPI/Paytm/Bank)</td></tr>
+                <tr><td class="row-label">🔐 Security</td><td class="row-data">256-bit SSL Encryption</td></tr>
+                <tr><td class="row-label">📱 Compatibility</td><td class="row-data">Android 6.0+ & iOS</td></tr>
             </tbody>
         </table>
 
-        <img src="pr2.png" alt="Preview 2" class="pr-img">
-
-        <h3>🚀 Premium Features</h3>
-        <p style="margin-bottom: 20px;">88 Slots is not just a game; it's a world-class casino experience. Enjoy zero-lag gameplay with our advanced server technology.</p>
-
-        <div class="gambling-note">
-            <h4>⚠️ Important Notice: Real Money Gaming</h4>
-            <p>This website promotes real money gambling. Participation involves financial risk and may be addictive. Only users aged 18 and above are allowed to play. Please play responsibly and at your own risk.</p>
+        <div class="alert-box">
+            <h4>⚠️ Disclaimer: Responsible Gaming</h4>
+            <p>This game involves an element of financial risk and may be addictive. Please play responsibly and at your own risk. This platform is strictly for users <b>18 years and older.</b></p>
         </div>
 
-        <img src="pr3.png" alt="Preview 3" class="pr-img">
+        <img src="pr2.png" alt="Gameplay" class="img-preview">
 
-        <h4 style="font-size: 18px; margin-bottom: 10px;">🛡️ Why Choose Us?</h4>
-        <p style="font-size: 15px; color: var(--text-gray);">We provide the safest platform for online slots with daily free spins and VIP rewards. Our 24/7 customer support ensures you never face any issues with deposits or withdrawals.</p>
+        <div class="official-note">
+            <b>Note:</b> 88slotsgames.com is a dedicated portal for sharing direct referral and download links for the official app. We do not own the game, nor are we the official developers. This site is for APK distribution and information purposes only.
+        </div>
 
-        <img src="pr4.png" alt="Preview 4" class="pr-img">
+        <img src="pr3.png" alt="Winners" class="img-preview">
     </div>
 
-    <div class="footer">
-        <div class="social-icons">
-            <i class="fab fa-facebook-square"></i>
-            <i class="fab fa-twitter"></i>
+    <footer class="footer-area">
+        <div class="social-row">
+            <i class="fab fa-facebook"></i>
             <i class="fab fa-instagram"></i>
+            <i class="fab fa-telegram"></i>
             <i class="fab fa-youtube"></i>
         </div>
-        <p style="font-size: 12px; color: #666; font-weight: bold;">Copyright © 2026 88slotsgames.com | All Rights Reserved</p>
-        <p style="font-size: 10px; color: #999; margin-top: 10px;">18+ Only | Terms & Conditions Apply</p>
-    </div>
+        <p style="font-weight: 600; font-size: 14px;">© 2026 88 Slots Download Portal | All Rights Reserved</p>
+        <p style="font-size: 11px; color: #888; margin-top: 10px;">Play Smart • Play Safe • 18+ Only</p>
+    </footer>
 </a>
 
 <script>
     window.addEventListener('load', () => {
-        confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#fadb14', '#ffffff', '#ff4d4f'] });
     });
 </script>
 
